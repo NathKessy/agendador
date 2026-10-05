@@ -1,7 +1,5 @@
 package com.nath.agendador.domain;
 
-import com.nath.agendador.domain.enums.StatusAgendamento;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -16,6 +14,8 @@ public class Cliente {
 
     private String nome;
     private String telefone;
+
+    public Cliente() { }
 
     public Cliente(String nome, String telefone) {
         this.nome = nome;

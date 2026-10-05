@@ -18,6 +18,8 @@ public class Funcionario {
     private String email;
     private String idade;
 
+    public Funcionario() { }
+
     public Funcionario(String nome, String numero, String cpf, String email, String idade) {
         this.nome = nome;
         this.numero = numero;

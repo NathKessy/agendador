@@ -16,6 +16,8 @@ public class Servico {
     private String descricao;
     private double valor;
 
+    public Servico() { }
+
     public Servico (String nome, String descricao, double valor) {
         this.nome = nome;
         this.descricao = descricao;
