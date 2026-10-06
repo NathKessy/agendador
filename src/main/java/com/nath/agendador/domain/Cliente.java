@@ -38,5 +38,9 @@ public class Cliente {
         this.telefone = telefone;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
 
 }
