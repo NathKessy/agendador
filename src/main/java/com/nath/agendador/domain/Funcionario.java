@@ -18,7 +18,8 @@ public class Funcionario {
     private String email;
     private String idade;
 
-    public Funcionario() { }
+    public Funcionario() {
+    }
 
     public Funcionario(String nome, String numero, String cpf, String email, String idade) {
         this.nome = nome;
@@ -27,6 +28,10 @@ public class Funcionario {
         this.email = email;
         this.idade = idade;
 
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getNome() {
