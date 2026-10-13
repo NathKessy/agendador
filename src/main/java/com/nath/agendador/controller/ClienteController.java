@@ -45,7 +45,6 @@ public class ClienteController {
     @PostMapping
     public ResponseEntity<Cliente> inserir(@RequestBody Cliente cliente) {
         var novoCliente = service.inserir(cliente);
-
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
     }
 

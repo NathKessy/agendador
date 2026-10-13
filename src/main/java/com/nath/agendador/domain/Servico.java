@@ -1,24 +1,27 @@
 package com.nath.agendador.domain;
 
+import java.math.BigDecimal;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-@Entity 
+@Entity
 public class Servico {
 
-    @Id 
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
+
     private String nome;
     private String descricao;
-    private double valor;
+    private BigDecimal valor;
 
-    public Servico() { }
+    public Servico() {
+    }
 
-    public Servico (String nome, String descricao, double valor) {
+    public Servico(String nome, String descricao, BigDecimal valor) {
         this.nome = nome;
         this.descricao = descricao;
         this.valor = valor;
@@ -40,13 +43,16 @@ public class Servico {
         this.descricao = descricao;
     }
 
-    public double getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(double valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 
-    
+    public Integer getId() {
+        return id;
+    }
+
 }
