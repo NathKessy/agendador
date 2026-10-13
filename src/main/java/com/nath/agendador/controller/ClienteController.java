@@ -31,55 +31,51 @@ public class ClienteController {
     private ClienteService service;
 
     @GetMapping("/{id}")
-        @Operation(summary = "Buscar cliente por ID", description = "Busca um cliente pelo identificador.")
-        @ApiResponse(responseCode = "200", description = "Cliente encontrado")
-        public ResponseEntity<Cliente> buscar(
-            @Parameter(description = "Identificador do cliente", example = "1")
-            @PathVariable Integer id) {
+    @Operation(summary = "Buscar cliente por ID", description = "Busca um cliente pelo identificador.")
+    @ApiResponse(responseCode = "200", description = "Cliente encontrado")
+    public ResponseEntity<Cliente> buscar(
+            @Parameter(description = "Identificador do cliente", example = "1") @PathVariable Integer id) {
+
         var cliente = service.buscar(id);
         return ResponseEntity.ok().body(cliente);
     }
 
     @GetMapping
-        @Operation(summary = "Listar clientes por ID", description = "Retorna todos os clientes cadastrados.")
-        @ApiResponse(responseCode = "200", description = "Lista de clientes retornada")
+    @Operation(summary = "Listar clientes", description = "Retorna todos os clientes cadastrados.")
+    @ApiResponse(responseCode = "200", description = "Lista de clientes retornada")
     public ResponseEntity<List<Cliente>> buscarTodos() {
+
         var clientes = service.buscarTodos();
         return ResponseEntity.ok().body(clientes);
     }
 
     @PutMapping("/{id}")
-        @Operation(summary = "Atualizar cliente por ID", description = "Atualiza os dados de um cliente existente.")
-        @ApiResponse(responseCode = "200", description = "Cliente atualizado")
-        public ResponseEntity<Cliente> atualizar(
-            @Parameter(description = "Identificador do cliente", example = "1")
-            @PathVariable Integer id,
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                description = "Dados atualizados do cliente",
-                required = true)
-            @RequestBody Cliente cliente) {
+    @Operation(summary = "Atualizar cliente por ID", description = "Atualiza os dados de um cliente existente.")
+    @ApiResponse(responseCode = "200", description = "Cliente atualizado")
+    public ResponseEntity<Cliente> atualizar(
+            @Parameter(description = "Identificador do cliente", example = "1") @PathVariable Integer id,
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Dados atualizados do cliente", required = true) @RequestBody Cliente cliente) {
+
         var atualizado = service.atualizar(id, cliente);
         return ResponseEntity.ok(atualizado);
     }
 
     @PostMapping
-        @Operation(summary = "Cadastrar cliente", description = "Cria um novo cliente.")
-        @ApiResponse(responseCode = "201", description = "Cliente criado")
-        public ResponseEntity<Cliente> inserir(
-            @io.swagger.v3.oas.annotations.parameters.RequestBody(
-                description = "Dados do novo cliente",
-                required = true)
-            @RequestBody Cliente cliente) {
+    @Operation(summary = "Cadastrar cliente", description = "Cria um novo cliente.")
+    @ApiResponse(responseCode = "201", description = "Cliente criado")
+    public ResponseEntity<Cliente> inserir(
+            @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Dados do novo cliente", required = true) @RequestBody Cliente cliente) {
+
         var novoCliente = service.inserir(cliente);
         return ResponseEntity.status(HttpStatus.CREATED).body(novoCliente);
     }
 
     @DeleteMapping("/{id}")
-        @Operation(summary = "Excluir cliente", description = "Remove um cliente pelo identificador.")
-        @ApiResponse(responseCode = "204", description = "Cliente excluído")
-        public ResponseEntity<Void> deletar(
-            @Parameter(description = "Identificador do cliente", example = "1")
-            @PathVariable Integer id) {
+    @Operation(summary = "Excluir cliente por ID", description = "Remove um cliente pelo identificador.")
+    @ApiResponse(responseCode = "204", description = "Cliente excluído")
+    public ResponseEntity<Void> deletar(
+            @Parameter(description = "Identificador do cliente", example = "1") @PathVariable Integer id) {
+        
         service.deletar(id);
         return ResponseEntity.noContent().build();
     }
